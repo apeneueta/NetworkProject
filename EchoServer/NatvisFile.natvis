@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="Volcano">
+    <DisplayString>Name: {m_EnglishName,sb}</DisplayString>
+    <Expand>
+      <Item Name="Native name">m_nativeName,sb</Item>
+      <Item Name="Meaning">m_meaning</Item>
+      <Item Name="Elevation">m_elevation</Item>
+    </Expand>
+  </Type>
+  <Type Name="google::protobuf::RepeatedField&lt;*&gt;">
+    <DisplayString>{{ size={current_size_} }}</DisplayString>
+    <Expand>
+      <Item Name="[size]" ExcludeView="simple">current_size_</Item>
+      <Item Name="[capacity]" ExcludeView="simple">total_size_</Item>
+
+    </Expand>
+  </Type>
+  <Type Name="google::protobuf::RepeatedPtrField&lt;*&gt;">
+    <DisplayString>{{ size={current_size_} }}</DisplayString>
+    <Expand>
+      <Item Name="[size]" ExcludeView="simple">current_size_</Item>
+      <Item Name="[capacity]" ExcludeView="simple">total_size_</Item>
+      <Item Name="[arena]" ExcludeView="simple">arena_</Item>
+      <ArrayItems Condition="rep_ != 0">
+        <Size>current_size_</Size>
+        <ValuePointer>($T1**)rep_->elements</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+</AutoVisualizer>

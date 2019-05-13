@@ -1,0 +1,45 @@
+syntax = "proto3";
+package Final;
+
+//import "google/protobuf/timestamp.proto";
+//google.protobuf.Timestamp last_updated = 5;
+//protoc -I=../Protos/ --cpp_out=../Generated/ ../Protos/Final.proto
+
+message Account 
+{
+  int32 id = 1;  // Unique ID number for this account. the socket number
+  string name = 2;
+  string password = 3;
+  bool LoggedIn = 4;
+  Player player = 5;
+  repeated History gameHist = 6;
+  int32 wins = 7;
+  int32 loses = 8;
+  bool Challenged = 9;
+  bool InGame = 10;
+}
+
+message Commands
+{
+  string command = 1;
+  string name = 2;
+  string password = 3;
+  string message = 4;
+
+}
+
+message Player
+{
+	repeated int32 units = 1;
+}
+
+message History
+{
+	string oponent = 1;
+	bool victory = 2;
+}
+
+message Users
+{
+	repeated Account users = 1;
+}
